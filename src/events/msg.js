@@ -3,10 +3,13 @@ const { run } = require("./ready");
 module.exports = {
 	name: "msg",
 	async run(message, client) {
+		
 		if (message.author.bot) return;
-		let prefix = client.config.prefix;
+		const schema = require('../../models/guild')
+        const data = await schema.findOne({ GuildID: message.guild.id })
+        if(!data) return message.reply({ content: `There is no schemas existing for the guild. Creating one, please wait...`, allowedMentions: { repliedUser: false } }) && new schema({ GuildID: message.guild.id }).save().then(() => message.reply({ content: `The schema has been created. You can now use the commands.`, allowedMentions: { repliedUser: false } }));
+		let prefix = data.Prefix;
 		if (!message.content.toLowerCase().startsWith(prefix)) return;
-
 		let args = message.content.substring(prefix.length).split(" ");
 
 		const extras = {
@@ -14,8 +17,9 @@ module.exports = {
 		};
 
 		const cmd = args[0].toLowerCase();
-		const command = client.commands.get(`${cmd}`);
+		const command = client.commands.get(String(cmd));
 		if (!command) return;
-		command.command(client, message, args, extras);
+		client.logger.info(`Runned command ${command.name} in ${message.guild.name} by ${message.author.tag}.`)
+		command.command(client, message, args, extras, data);
 	},
 };
