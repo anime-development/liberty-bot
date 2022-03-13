@@ -9,7 +9,7 @@ module.exports = (client) => {
 			let pull = require(`../commands/${dir}/${file}`);
 
 			client.commands.set(pull.name, pull);
-			console.log(`Loaded command: ${file}`);
+			client.logger.info(`Loaded command: ${file}`);
 		}
 	});
 };
