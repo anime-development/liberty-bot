@@ -6,7 +6,7 @@ module.exports = {
 	desc: "Gets the server's informations",
 	category: "Info",
 	usage: "serverinfo",
-	async command(client, message, args, extras, data) {
+	async command(client, message, args, extras) {
         const guild = message.guild;
         client.users.fetch(String(guild.ownerId)).then(userOwner => {
             const embed = new MessageEmbed()
