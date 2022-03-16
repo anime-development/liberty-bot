@@ -8,7 +8,7 @@ module.exports = {
 	desc: "Get clientinfo",
 	category: "Info",
 	usage: "clientinfo",
-	async command(bot, message, args, extras, data) {
+	async command(bot, message, args, extras) {
 		let memused;
 		let memtotal;
 		let os;

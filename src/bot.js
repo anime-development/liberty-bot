@@ -8,7 +8,6 @@ const { consoleFormat } = require("winston-console-format");
 const client = new Client({
 	intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
 });
-
 client.logger = createLogger({
 	level: "silly",
 	format: format.combine(
@@ -62,5 +61,13 @@ client.on("ready", async () => {
 client.on("messageCreate", async (message) => {
 	await client.events.get("msg").run(message, client);
 });
+
+client.on("interactionCreate", async interaction => {
+	await client.events.get("interactionCreate").run(interaction, client);
+})
+
+client.on("guildBanRemove", async ban => {
+	await client.events.get("guildBanRemove").run(ban, client);
+})
 
 client.login(token);
