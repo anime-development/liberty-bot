@@ -6,9 +6,9 @@ const { MessageEmbed } = require("discord.js");
 module.exports = {
 	name: "clientinfo",
 	desc: "Get clientinfo",
-	category: "Info",
+	cat: "Info",
 	usage: "clientinfo",
-	async command(bot, message, args, extras, data) {
+	async command(bot, message, args, extras) {
 		let memused;
 		let memtotal;
 		let os;
@@ -18,9 +18,6 @@ module.exports = {
 		let nets;
 		let disk;
 		let docker;
-
-		const msg = await message.reply({ content: `Loading client informations, please wait... (can take up to 1-2 minutes)`, allowedMentions: { repliedUser: false } })
-
 		await si.mem().then((data) => {
 			memused = data.active;
 			memtotal = data.total;
@@ -88,7 +85,7 @@ module.exports = {
 				true
 			)
 			.addField(
-				"Memory",
+				"Memery",
 				`${(await memused) || "NULL"} / ${(await memtotal) || "NULL"}`,
 				true
 			)
@@ -143,10 +140,9 @@ module.exports = {
 					bm ? `${bm} Minutes,` : " "
 				} ${bs || "NULL"} Seconds`,
 				false
-			)
-			.setColor('RANDOM');
+			);
 
-		await msg.edit({ content:`Informations loaded!`, embeds: [embed], allowedMentions: { repliedUser: false } });
+		await message.channel.send({ embeds: [embed] });
 
 		memused = "";
 		memtotal = "";
