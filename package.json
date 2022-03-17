@@ -25,6 +25,7 @@
 		"ram-api.js": "^5.0.0",
 		"systeminformation": "^5.9.17",
 		"winston": "^3.3.3",
-		"winston-console-format": "^1.0.8"
+		"winston-console-format": "^1.0.8",
+		"yarn": "^1.22.17"
 	}
 }
