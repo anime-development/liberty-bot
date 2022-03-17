@@ -1,1 +1,0 @@
-addField(`・`, `${variable.map(command => `\`${command.name}\``).join(', ')}`)

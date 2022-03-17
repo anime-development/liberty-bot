@@ -1,7 +1,7 @@
 module.exports = {
 	name: "",
 	desc: "",
-	category: "",
+	cat: "",
 	usage: "",
 	async command(client, message, args, extras) {},
 };

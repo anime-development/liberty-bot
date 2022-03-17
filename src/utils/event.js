@@ -5,6 +5,6 @@ module.exports = (client) => {
 	for (let file of events) {
 		let pull = require(`../events/${file}`);
 		client.events.set(pull.name, pull);
-		client.logger.info(`Loaded Event: ${file}`);
+		console.log(`Loaded Event: ${file}`);
 	}
 };
