@@ -3,5 +3,5 @@ module.exports = {
 	desc: "",
 	category: "",
 	usage: "",
-	async command(client, message, args, extras) {},
+	async command(client, message, args, extras, data) {},
 };

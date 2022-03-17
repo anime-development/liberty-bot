@@ -6,7 +6,7 @@ module.exports = {
 	desc: "Says goodnight to everyone!",
 	category: "Fun",
 	usage: "goodnight",
-	async command(client, message, args) {
+	async command(client, message, args, extras, data) {
         let text;
         let url;
         await ramapi.gn(client.config.apiversion, client.config.apikey, client.config.apilang).then(data => {url = data.url; text = data.text});

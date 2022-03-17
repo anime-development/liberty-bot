@@ -6,7 +6,7 @@ module.exports = {
 	desc: "Gets a random dog from Dog.ceo api",
 	category: "Fun",
 	usage: "dog",
-	async command(client, message, args, extras) {
+	async command(client, message, args, extras, data) {
         const dog = await fetch("http://dog.ceo/api/breeds/image/random")
             .then(res => res.json())
             .then(json => json.message);

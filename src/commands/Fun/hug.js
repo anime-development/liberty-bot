@@ -6,7 +6,7 @@ module.exports = {
 	desc: "Hugs someone",
 	category: "Fun",
 	usage: "hug <@user>",
-	async command(client, message, args, extras) {
+	async command(client, message, args, extras, data) {
         const member = message.mentions.members.first();
         if(!member) return message.reply({ content: `Please ping the user you want to hug`, allowedMentions: { repliedUser: false } });
         const url = await ramapi.hug(client.config.apiversion, client.config.apikey).then(data => data.url);

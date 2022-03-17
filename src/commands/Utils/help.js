@@ -5,14 +5,14 @@ module.exports = {
 	desc: "The help page",
 	category: "Utils",
 	usage: "help [command]",
-	async command(client, message, args, extras) {
+	async command(client, message, args, extras, data) {
         if(args[1]) {
             const commandInput = args[1];
             const command = client.commands.get(commandInput.toLowerCase());
             if(!command) return message.reply({ content: `I'm sorry but this command does not exists.`, allowedMentions: { repliedUser: false } });
             const embed = new MessageEmbed()
                 .setTitle(`Command ${command.name}`)
-                .setDescription(`> ${command.desc}\n\nSyntax: \`${extras.data.Prefix}${command.usage}\`\nCategory: \`${command.category}\``)
+                .setDescription(`> ${command.desc}\n\nSyntax: \`${data.Prefix}${command.usage}\`\nCategory: \`${command.category}\``)
                 .setColor("RANDOM")
                 .setAuthor(message.author.username, message.author.avatarURL())
                 .setTimestamp();
@@ -27,7 +27,7 @@ module.exports = {
             const embed = new MessageEmbed()
                 .setTitle("Help")
                 .setAuthor(message.author.username, message.author.avatarURL())
-                .setDescription(`To execute a command, do ${extras.data.Prefix}<command>.\nTo get an advanced help of the command, do ${extras.data.Prefix}help [command].`)
+                .setDescription(`To execute a command, do ${data.Prefix}<command>.\nTo get an advanced help of the command, do ${data.Prefix}help [command].`)
                 .addField(`⚙️・Config`,`${configCMDS.map(command => `\`${command.name}\``).join(', ')}`)
                 .addField(`ℹ️・Info`, `${infoCMDS.map(command => `\`${command.name}\``).join(', ')}`)
                 .addField(`🎉・Fun`, `${funCMDS.map(command => `\`${command.name}\``).join(', ')}`)

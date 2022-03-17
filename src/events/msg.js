@@ -14,13 +14,12 @@ module.exports = {
 
 		const extras = {
 			hello: "Hello",
-			data,
 		};
 
 		const cmd = args[0].toLowerCase();
 		const command = client.commands.get(String(cmd));
 		if (!command) return;
 		client.logger.info(`Runned command ${command.name} in ${message.guild.name} by ${message.author.tag}.`)
-		command.command(client, message, args, extras);
+		command.command(client, message, args, extras, data);
 	},
 };

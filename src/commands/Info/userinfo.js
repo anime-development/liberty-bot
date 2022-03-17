@@ -6,7 +6,7 @@ module.exports = {
 	desc: "Gets user's info (you or someone!)",
 	category: "Info",
 	usage: "userinfos [user]",
-	async command(client, message, args, extras) {
+	async command(client, message, args, extras, data) {
         let member = message.member;
         if (args[1]) member = message.mentions.members.first() ? message.mentions.members.first() : message.guild.members.cache.get(args[0]) ? message.guild.members.cache.get(args[0]) : null;
         let user = member.user;
